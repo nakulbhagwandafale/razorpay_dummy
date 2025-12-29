@@ -191,8 +191,8 @@ declare global {
 }
 
 function initRazorpayCheckout(options: RazorpayOptions) {
-  // IMPORTANT: Replace with your actual Razorpay Key ID
-  const RAZORPAY_KEY_ID = 'rzp_test_YOUR_KEY_HERE';
+  // Razorpay Live Key ID
+  const RAZORPAY_KEY_ID = 'rzp_live_RxQPaWeyT5yLdP';
 
   const razorpayOptions = {
     key: RAZORPAY_KEY_ID,
