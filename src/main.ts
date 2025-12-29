@@ -200,7 +200,7 @@ function initRazorpayCheckout(options: RazorpayOptions) {
     currency: 'INR',
     name: 'LearnPro',
     description: `${options.planName} Plan Subscription`,
-    order_id: options.orderId,
+    // Note: order_id removed - for production, create orders via backend API
     handler: function (response: any) {
       // Payment successful
       console.log('Payment successful:', response);
@@ -208,8 +208,6 @@ function initRazorpayCheckout(options: RazorpayOptions) {
       // Save payment info to session storage for course page
       sessionStorage.setItem('payment', JSON.stringify({
         paymentId: response.razorpay_payment_id,
-        orderId: response.razorpay_order_id,
-        signature: response.razorpay_signature,
         planId: options.planId,
         planName: options.planName,
         amount: options.amount
@@ -219,9 +217,9 @@ function initRazorpayCheckout(options: RazorpayOptions) {
       router.navigate('/course');
     },
     prefill: {
-      name: 'Test User',
-      email: 'test@example.com',
-      contact: '9999999999'
+      name: '',
+      email: '',
+      contact: ''
     },
     notes: {
       plan_id: options.planId
